@@ -6,7 +6,7 @@ title: Hello there!
 `Testing code`
 
 Some ruby code:
-```haskell
+```ruby
 gem 'india'
 ```
 
