@@ -62,13 +62,14 @@ version: v1.2.0
 markdown: redcarpet
 redcarpet:
   extensions:
-    - hard_wrap
     - no_intra_emphasis
     - autolink
     - strikethrough
     - tables
     - lax_spacing
     - with_toc_data
+    - quote
+    - superscript
     
 # Set the Sass partials directory, as we're using @imports
 sass:
