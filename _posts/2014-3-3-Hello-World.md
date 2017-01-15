@@ -15,7 +15,7 @@ haskell code
 const [True,False]
 ```
 java code:
-```java
+```Java
 public static void main(String[] args)
 ```
 
