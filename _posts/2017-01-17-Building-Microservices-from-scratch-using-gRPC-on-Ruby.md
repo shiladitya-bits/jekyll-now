@@ -25,5 +25,26 @@ We will divide our code structure into 3 separate repositories:
  
 **`snip`** will be packaged as a gem, and included in both **`snip-service`** and **`X-app`**.
 
+### Step 1: Define proto files
+
+Let's create a new file `snip.proto`
+
+```proto
+syntax = "proto3";
+package snip;
+
+service UrlSnipService {
+    rpc snip_it(SnipRequest) returns (SnipResponse) {}
+}
+
+message SnipRequest {
+    string url = 1;
+}
+
+message SnipResponse {
+    string url = 1;
+}
+`
+
 
 
