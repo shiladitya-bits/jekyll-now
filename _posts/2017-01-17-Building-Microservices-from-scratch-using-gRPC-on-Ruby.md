@@ -33,7 +33,7 @@ Make sure you have ruby and bundler setup working. Then, install the required ge
  gem install grpc-tools
  ```
 
-### PART 1: snip gem
+### PART A: snip gem
 
 #### Step 1: Setup snip gem
 
@@ -153,11 +153,20 @@ end
 Voila! You are done with your `snip` gem. We will move onto the service implementation next.
 
 
-### PART 2: snip-service & gRPC server
+### PART B: snip-service & gRPC server
 
-#### Step 4: Service implementation
+### Step 1: Setup
 
 
-#### Step 5: Setup your gRPC server
+#### Step 2: Service implementation
 
-###
+
+#### Step 3: Setup your gRPC server
+
+
+### PART C: X-app client
+
+#### Step 1: Setup
+ 
+ 
+#### Step 2: Last step: RPC call!
