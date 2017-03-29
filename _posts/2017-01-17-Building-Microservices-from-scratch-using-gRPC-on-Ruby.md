@@ -33,7 +33,9 @@ Make sure you have ruby and bundler setup working. Then, install the required ge
  gem install grpc-tools
  ```
 
-### Step 1: Setup snip gem
+### PART 1: snip gem
+
+#### Step 1: Setup snip gem
 
 snip is supposed to be a ruby gem, so you could use the bundler scaffold for creating it.
 
@@ -47,7 +49,7 @@ Add this to `snip.gemspec` file:
 spec.add_dependency "grpc"
 ```
 
-### Step 2: Define proto files
+#### Step 2: Define proto files
 
 Let's create a new file `proto/snip.proto`
 
@@ -68,7 +70,7 @@ message SnipResponse {
 }
 ```
 
-### Step 3: Generate ruby bindings for the proto definition
+#### Step 3: Generate ruby bindings for the proto definition
 
 Next, we are going to convert the defined proto files to ruby bindings, which are ultimately going to be used by both the client and the server.
 
@@ -150,9 +152,12 @@ end
 
 Voila! You are done with your `snip` gem. We will move onto the service implementation next.
 
-### Step 4: Service implementation
+
+### PART 2: snip-service & gRPC server
+
+#### Step 4: Service implementation
 
 
-### Step 5: Setup your gRPC server
+#### Step 5: Setup your gRPC server
 
 ###
