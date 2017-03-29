@@ -17,7 +17,7 @@ In the remaining part of this post, I will be walking you through setting up a s
 
 We will divide our code structure into 3 separate repositories:
 
-1. **`snip`** : contains the proto definitions and converted ruby files for client communication. Basically, this is like an interface between client and server, specifying the RPC methods, and the request an response formats.
+1. **`snip`** : contains the proto definitions and converted ruby files for client communication. Basically, this is like an interface between client and server, specifying the RPC methods, and the request and response formats.
 
 2. **`snip-service`** : Service implementation for the RPC methods (This is where the gRPC server sits). 
 
