@@ -37,7 +37,7 @@ Make sure you have ruby and bundler setup working. Then, install the required ge
 
 #### Step 1: Setup snip gem
 
-snip is supposed to be a ruby gem, so you could use the bundler scaffold for creating it.
+`snip` is supposed to be a ruby gem, so you could use the bundler scaffold for creating it.
 
 ```
 bundle gem snip
@@ -78,7 +78,7 @@ Next, we are going to convert the defined proto files to ruby bindings, which ar
 grpc_tools_ruby_protoc -Iproto --ruby_out=lib --grpc_out=lib proto/snip.proto
 ```
 
-My `snip` directory tree after this command:
+My `snip` directory *tree* after this command:
 
 ```
 ├── Gemfile
@@ -155,18 +155,112 @@ Voila! You are done with your `snip` gem. We will move onto the service implemen
 
 ### PART B: snip-service & gRPC server
 
-### Step 1: Setup
+#### Step 1: Setup
+Add the following to your `Gemfile` in `snip-service`
 
+```
+gem 'snip',:git => "git@github.com:shiladitya-bits/snip.git",:branch => 'master'
+gem 'grpc', '~> 1.0'
+```
+
+Replace `snip` gem path with wherever you have setup the gem to be in.
 
 #### Step 2: Service implementation
 
+**`lib/services/snip_service.rb`**
+
+```ruby
+require 'grpc'
+require 'snip_services_pb'
+
+class SnipService < Snip::UrlSnipService::Service
+
+  def snip_it(snip_req, _unused_call)
+    puts "Received URL snip request for #{snip_req.url}"
+    Snip::SnipResponse.new(url: snip_req.url)
+  end
+end
+```
+
+`snip_it` is the RPC method we defined in our proto. Let us look at the 2 parameters here:
+
+* `snip_req` - the request proto object sent by client in the format as defined in proto `Snip::SnipRequest`
+* `_unused_call` - this contains other metadata sent by client. We will talk about how to send metadata in another post later.
+
+You need to return an object of `Snip::SnipResponse` from this method as your response. For keeping the implementation simple, we are sending back the same URL as sent by the client.
 
 #### Step 3: Setup your gRPC server
 
+Now that your service implementation is ready, let us setup the gRPC server that will be serving calls to your service.
+
+**`lib/start_server.rb`**
+
+```ruby
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'snip_services_pb'
+require_relative 'services/snip_service'
+class SnipServer
+
+  class << self
+    def start
+      start_grpc_server
+    end
+
+    private
+    def start_grpc_server
+      @server = GRPC::RpcServer.new
+      @server.add_http2_port("0.0.0.0:50052", :this_port_is_insecure)
+      @server.handle(SnipService)
+      @server.run_till_terminated
+    end
+  end
+end
+
+SnipServer.start
+```
+
+A very simple ruby class which starts the server on port **50052** on running this:
+```
+bundle exec lib/start_server.rb
+```
+
+You might need to do a `chmod +x lib/start_server.rb` for giving executable permissions.
 
 ### PART C: X-app client
 
 #### Step 1: Setup
+Same as the `snip-service` `Gemfile`, you need to include `snip` gem in your client as well.
  
+```
+ gem 'snip',:git => "git@github.com:shiladitya-bits/snip.git",:branch => 'master'
+ gem 'grpc', '~> 1.0'
+ ```
  
 #### Step 2: Last step: RPC call!
+
+Just a final piece of code which helps you test out your gRPC server:
+
+**`test/test_snip_service`**
+
+```ruby
+#!/usr/bin/env ruby
+require 'grpc'
+require 'snip_services_pb'
+
+def test_single_call
+  stub = Snip::UrlSnipService::Stub.new('0.0.0.0:50052', :this_channel_is_insecure)
+  req = Snip::SnipRequest.new(url: 'http://shiladitya-bits.github.io')
+  resp_obj = stub.snip_it(req)
+  puts "Snipped URL: #{resp_obj.url}"
+end
+
+test_single_call
+```
+
+There you go! Your first working gRPC communication is complete!
+
+The [`snip`](https://github.com/shiladitya-bits/snip) and [`snip-service`](https://github.com/shiladitya-bits/snip-service) repositories are available on Github. You can find a sample client call inside `snip-service` itself in `test/test_snip_service`. 
+
+
+This is the end of this post. Stay tuned for more posts on how to integrate a gRPC server in your existing Rails apps, and how to deploy gRPC servers using Docker.
