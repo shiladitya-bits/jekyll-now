@@ -28,7 +28,7 @@ We will divide our code structure into 3 separate repositories:
 ### Step 0: Install dependencies
 Make sure you have ruby and bundler setup working. Then, install the required gems for grpc:
                                                          
- ```
+ ```console
  gem install grpc
  gem install grpc-tools
  ```
@@ -39,13 +39,13 @@ Make sure you have ruby and bundler setup working. Then, install the required ge
 
 `snip` is supposed to be a ruby gem, so you could use the bundler scaffold for creating it.
 
-```
+```console
 bundle gem snip
 ```
 
 Add this to `snip.gemspec` file:
 
-```
+```ruby
 spec.add_dependency "grpc"
 ```
 
@@ -74,7 +74,7 @@ message SnipResponse {
 
 Next, we are going to convert the defined proto files to ruby bindings, which are ultimately going to be used by both the client and the server.
 
-```
+```console
 grpc_tools_ruby_protoc -Iproto --ruby_out=lib --grpc_out=lib proto/snip.proto
 ```
 
@@ -158,7 +158,7 @@ Voila! You are done with your `snip` gem. We will move onto the service implemen
 #### Step 1: Setup
 Add the following to your `Gemfile` in `snip-service`
 
-```
+```ruby
 gem 'snip',:git => "git@github.com:shiladitya-bits/snip.git",:branch => 'master'
 gem 'grpc', '~> 1.0'
 ```
@@ -232,7 +232,7 @@ You might need to do a `chmod +x lib/start_server.rb` for giving executable perm
 #### Step 1: Setup
 Same as the `snip-service` `Gemfile`, you need to include `snip` gem in your client as well.
  
-```
+```ruby
  gem 'snip',:git => "git@github.com:shiladitya-bits/snip.git",:branch => 'master'
  gem 'grpc', '~> 1.0'
  ```

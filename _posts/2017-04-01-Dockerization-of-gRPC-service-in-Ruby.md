@@ -13,11 +13,11 @@ Learn more about them on the [official site](https://www.docker.com/what-contain
 
 First, make sure your local environment has Docker engine setup. There are plenty of resources on the official website to download and get your local Docker engine running.
 
-####Setting up the Dockerfile
+#### Setting up the Dockerfile
 
 Create a new file in your project root directory: **`Dockerfile`**
 
-```
+```dockerfile
 FROM ruby:2.3.1
 
 RUN mkdir /snip
