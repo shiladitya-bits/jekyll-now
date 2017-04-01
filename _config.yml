@@ -70,7 +70,7 @@ redcarpet:
     - lax_spacing
     - with_toc_data
     - quote
-        
+
 # Set the Sass partials directory, as we're using @imports
 sass:
   style: :expanded # You might prefer to minify using :compressed

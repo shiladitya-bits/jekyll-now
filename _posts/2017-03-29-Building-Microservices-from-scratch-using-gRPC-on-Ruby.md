@@ -159,7 +159,7 @@ Voila! You are done with your `snip` gem. We will move onto the service implemen
 Add the following to your `Gemfile` in `snip-service`
 
 ```ruby
-gem 'snip',:git => "git@github.com:shiladitya-bits/snip.git",:branch => 'master'
+gem 'snip',:git => "https://github.com/shiladitya-bits/snip",:branch => 'master'
 gem 'grpc', '~> 1.0'
 ```
 
@@ -233,7 +233,7 @@ You might need to do a `chmod +x lib/start_server.rb` for giving executable perm
 Same as the `snip-service` `Gemfile`, you need to include `snip` gem in your client as well.
  
 ```ruby
- gem 'snip',:git => "git@github.com:shiladitya-bits/snip.git",:branch => 'master'
+ gem 'snip',:git => "https://github.com/shiladitya-bits/snip",:branch => 'master'
  gem 'grpc', '~> 1.0'
  ```
  
