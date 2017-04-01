@@ -264,3 +264,5 @@ The [`snip`](https://github.com/shiladitya-bits/snip) and [`snip-service`](https
 
 
 This is the end of this post. Stay tuned for more posts on how to integrate a gRPC server in your existing Rails apps, and how to deploy gRPC servers using Docker.
+
+Check out my latest post on [Dockerizing your gRPC service](https://shiladitya-bits.github.io/Dockerization-of-gRPC-service-in-Ruby/)

@@ -17,7 +17,7 @@ First, make sure your local environment has Docker engine setup. There are plent
 
 Create a new file in your project root directory: **`Dockerfile`**
 
-```docker
+```
 FROM ruby:2.3.1
 
 RUN mkdir /snip
