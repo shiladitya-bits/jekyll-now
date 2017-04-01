@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building Microservices from scratch using gRPC on Ruby
+title: Building Microservices using gRPC on Ruby
 ---
 
 Today, REST with JSON is the most popular framework amongst web developers for network communication. But, it is not very suitable for a microservice architecture mainly because of latency added by JSON data transmission / serializing / deserializing. 
