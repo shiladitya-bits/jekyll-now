@@ -27,7 +27,7 @@ I have mostly been writing gRPC services in Ruby recently. grpc-commons is curre
  
 **If you look at the generated ruby file for a gRPC service:**
    
-![generated rb file for grpc service](https://raw.githubusercontent.com/shiladitya-bits/shiladitya-bits.github.io/master/images/grpc-service-1.jpg)
+![generated rb file for grpc service](https://raw.githubusercontent.com/shiladitya-bits/shiladitya-bits.github.io/master/images/grpc-service-1.png)
    
 All the GRPC related methods are inherited from `GRPC::GenericService`.
     
@@ -88,7 +88,7 @@ If you see, I am wrapping each RPC method defined in the Service class (whenever
 
 Now, let's use this tool given in our gRPC client. This is how a modified service definition file will look like after replacing the `GenericService` module:
 
-![generated rb file for grpc service](https://raw.githubusercontent.com/shiladitya-bits/shiladitya-bits.github.io/master/images/grpc-service-2.jpg)
+![generated rb file for grpc service](https://raw.githubusercontent.com/shiladitya-bits/shiladitya-bits.github.io/master/images/grpc-service-2.png)
 
 Make sure the `grpc-commons` gem is included in your Gemfile. Full code is available in a sample grpc app ([snip](https://github.com/shiladitya-bits/snip-service)), which I have been discussing in [previous posts](https://shiladitya-bits.github.io/Building-Microservices-from-scratch-using-gRPC-on-Ruby/) as well.
 
