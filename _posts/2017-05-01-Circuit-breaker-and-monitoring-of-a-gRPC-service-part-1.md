@@ -101,3 +101,4 @@ Now, you are set to use the new wrapper (with Stoplight and StatsD tracking). Th
     resp_obj = stub.snip_it(req)
 ```
 
+We are done with a basic setup of using these common tools for circuit breaking and monitoring. Will continue implementation details on each in Part 2.
