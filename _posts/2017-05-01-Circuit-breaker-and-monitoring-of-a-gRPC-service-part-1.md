@@ -9,7 +9,7 @@ gRPC is a well suited framework for a micro-services architecture, where there a
 
 A common requirement in an architecture, where independent modules are separate services over the network. Difference between a normal method call and a RPC call over the network is that a RPC call can fail, or become unresponsive. From Martin Fowler's post, 
 
-"*The basic idea behind the circuit breaker is very simple. You wrap a protected function call in a circuit breaker object, which monitors for failures. Once the failures reach a certain threshold, the circuit breaker trips, and all further calls to the circuit breaker return with an error, without the protected call being made at all. Usually you'll also want some kind of monitor alert if the circuit breaker trips.*"
+*"The basic idea behind the circuit breaker is very simple. You wrap a protected function call in a circuit breaker object, which monitors for failures. Once the failures reach a certain threshold, the circuit breaker trips, and all further calls to the circuit breaker return with an error, without the protected call being made at all. Usually you'll also want some kind of monitor alert if the circuit breaker trips."*
 
 This is how a circuit breaker state diagram usually looks:
 
